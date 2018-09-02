@@ -69,15 +69,23 @@ def search_in_json(stream):
     json_s = f.read()
     f.close()
     res = simplejson.loads(json_s)
-    loop_stream_id = res['streams'][0]['loopStreamId']
+    parts = res['streams']
+    if len(parts) == 1:
+        loop_stream_id = res['streams'][0]['loopStreamId'] #several streams!! correct that
+        return 'http://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id
 
-    return 'http://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id
+    else:
+        urls = list()
+        for stream in parts:
+            loop_stream_id = stream['loopStreamId']
+            urls.append('http://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id)
+        return urls
 
 def show_list():
     """ just guessed """
     for s in streams:
         print('%s - %s'% s)
-    
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Get fm4 stream url')

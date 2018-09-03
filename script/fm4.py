@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+#Alexander Kutschera, 2018-09-02
+#The original script was written by Christop Glaubitz (https://chrigl.de/, Download: https://chrigl.de/~chris/fm4/)
+#Changes are commented
+
 import sys
 import simplejson
 import argparse
@@ -60,7 +64,7 @@ def search_in_playlist():
                 return location.text
     return None
 
-def search_in_json(stream):
+def search_in_json(stream): #changed function to look for multiple show streams
     """ from audioapi.orf.at. Have a look into http://fm4.orf.at/radio/stories/fm4houseofpain """
     # no exception handling because I want to know if it does not work
     now_s = datetime.now().strftime('%s')+'000'
@@ -69,13 +73,13 @@ def search_in_json(stream):
     json_s = f.read()
     f.close()
     res = simplejson.loads(json_s)
-    parts = res['streams']
-    if len(parts) == 1:
-        loop_stream_id = res['streams'][0]['loopStreamId'] #several streams!! correct that
+    parts = res['streams'] #check num of streams in the json
+    if len(parts) == 1: #regular download of single stream
+        loop_stream_id = res['streams'][0]['loopStreamId']
         return 'http://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id
 
     else:
-        urls = list()
+        urls = list() #if there are more then one parts the respective urls are returned in a list
         for stream in parts:
             loop_stream_id = stream['loopStreamId']
             urls.append('http://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id)

@@ -9,6 +9,7 @@ import simplejson
 import argparse
 import xml.etree.ElementTree as ET
 from datetime import datetime
+import time
 
 streams = [
     ('4HOPWed', 'House Of Pain'),
@@ -67,7 +68,8 @@ def search_in_playlist():
 def search_in_json(stream): #changed function to look for multiple show streams
     """ from audioapi.orf.at. Have a look into http://fm4.orf.at/radio/stories/fm4houseofpain """
     # no exception handling because I want to know if it does not work
-    now_s = datetime.now().strftime('%s')+'000'
+    #now_s = datetime.now().strftime('%s')+'000' does not work on windows
+    now_s = str(int(time.time()))+'000'
     f = urlopen('http://audioapi.orf.at/fm4/json/2.0/playlist/%s?callback=&_=%s' % (stream, now_s))
 
     json_s = f.read()

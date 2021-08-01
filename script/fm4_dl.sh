@@ -11,7 +11,7 @@ for URL in $SHOW_URL; do
   URL="${URL%\'}" #removes the starting quote
   URL="${URL#\'}" #removes the last quote
   sudo wget -O ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 ${URL} #download show
-  ../Dropbox-Uploader/dropbox_uploader.sh upload ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 /${SHOW_TAG}/2018-08-23_${SHOW_TAG}.mp3
+  #../Dropbox-Uploader/dropbox_uploader.sh upload ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 /${SHOW_TAG}/2018-08-23_${SHOW_TAG}.mp3
   #upload to Dropbox folder: remove the line above if you don't want to use the dropbox uploader
   let "i=i+1"
 done

@@ -50,12 +50,12 @@ except ImportError:
 
 def search_in_playlist():
     """ deprecated? No new data since beginnig of Apr 2013 """
-    f = urlopen('http://onapp1.orf.at/webcam/fm4/fod/spezialmusik.xspf')
+    f = urlopen('https://onapp1.orf.at/webcam/fm4/fod/spezialmusik.xspf')
     xml_s = f.read()
     f.close()
 
     xml = ET.fromstring(xml_s)
-    ns = {'n': 'http://xspf.org/ns/0/'}
+    ns = {'n': 'https://xspf.org/ns/0/'}
 
     for track in xml.findall('./n:trackList/n:track', namespaces=ns):
         title = track.find('./n:title', namespaces=ns)
@@ -66,11 +66,11 @@ def search_in_playlist():
     return None
 
 def search_in_json(stream): #changed function to look for multiple show streams
-    """ from audioapi.orf.at. Have a look into http://fm4.orf.at/radio/stories/fm4houseofpain """
+    """ from audioapi.orf.at. Have a look into https://fm4.orf.at/radio/stories/fm4houseofpain """
     # no exception handling because I want to know if it does not work
     #now_s = datetime.now().strftime('%s')+'000' does not work on windows
     now_s = str(int(time.time()))+'000'
-    f = urlopen('http://audioapi.orf.at/fm4/json/2.0/playlist/%s?callback=&_=%s' % (stream, now_s))
+    f = urlopen('https://audioapi.orf.at/fm4/json/2.0/playlist/%s?callback=&_=%s' % (stream, now_s))
 
     json_s = f.read()
     f.close()
@@ -78,13 +78,13 @@ def search_in_json(stream): #changed function to look for multiple show streams
     parts = res['streams'] #check num of streams in the json
     if len(parts) == 1: #regular download of single stream
         loop_stream_id = res['streams'][0]['loopStreamId']
-        return 'http://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id
+        return 'https://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id
 
     else:
         urls = list() #if there are more then one parts the respective urls are returned in a list
         for stream in parts:
             loop_stream_id = stream['loopStreamId']
-            urls.append('http://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id)
+            urls.append('https://loopstream01.apa.at/?channel=fm4&ua=flash&id=%s' % loop_stream_id)
         return urls
 
 def show_list():

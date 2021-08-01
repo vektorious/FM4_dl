@@ -48,30 +48,12 @@ try:
 except ImportError:
     print("Unable to run this script. urlopen not available.")
 
-def search_in_playlist():
-    """ deprecated? No new data since beginnig of Apr 2013 """
-    f = urlopen('https://onapp1.orf.at/webcam/fm4/fod/spezialmusik.xspf')
-    xml_s = f.read()
-    f.close()
-
-    xml = ET.fromstring(xml_s)
-    ns = {'n': 'https://xspf.org/ns/0/'}
-
-    for track in xml.findall('./n:trackList/n:track', namespaces=ns):
-        title = track.find('./n:title', namespaces=ns)
-        if title is not None and 'House of Pain' in title.text:
-            location = track.find('./n:location', namespaces=ns)
-            if location is not None:
-                return location.text
-    return None
-
-def search_in_json(stream): #changed function to look for multiple show streams
+def search_in_json(stream): # changed function to look for multiple show streams
     """ from audioapi.orf.at. Have a look into https://fm4.orf.at/radio/stories/fm4houseofpain """
     # no exception handling because I want to know if it does not work
     #now_s = datetime.now().strftime('%s')+'000' does not work on windows
     now_s = str(int(time.time()))+'000'
     f = urlopen('https://audioapi.orf.at/fm4/json/2.0/playlist/%s?callback=&_=%s' % (stream, now_s))
-
     json_s = f.read()
     f.close()
     res = simplejson.loads(json_s)

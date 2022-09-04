@@ -26,6 +26,7 @@ Now you can already get the stream mp3 urls:
 ```bash
 python fm4.py -s **insert show tag**
 ```
+The tags can be found in ```script\fm4.py```
 
 For example:
 

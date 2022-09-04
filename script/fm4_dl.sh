@@ -13,7 +13,7 @@ for URL in $SHOW_URL; do
   echo $DATE
   DATE="${DATE%%_*}"
   echo $DATE
-  sudo wget -O ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 ${URL} #download show
+  wget -O ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 ${URL} #download show
   #../Dropbox-Uploader/dropbox_uploader.sh upload ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 /${SHOW_TAG}/2018-08-23_${SHOW_TAG}.mp3
   #upload to Dropbox folder: remove the line above if you don't want to use the dropbox uploader
   let "i=i+1"

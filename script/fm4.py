@@ -30,7 +30,7 @@ streams = [
     ('4SHFri', 'Salon Helga'),
     ('4GLSun', 'Graue Lagune'),
     ('4PHTue', 'Fivas Ponyhof'),
-    ('4CZWed', 'Chez Hermez'),
+    ('4CZTue', 'Chez Hermez'),
     ('4BTThu', 'Bonustrack'),
     ('4PXFri', 'Project X'),
     ('4LBFri', 'La Boum de Luxe'),

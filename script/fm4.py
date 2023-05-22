@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #Alexander Kutschera, 2018-09-02
-#The original script was written by Christop Glaubitz (https://chrigl.de/, Download: https://chrigl.de/~chris/fm4/)
+#The original script was written by Christoph Glaubitz (https://chrigl.de/, Download: https://chrigl.de/~chris/fm4/)
 #Changes are commented
 
 import sys
@@ -12,32 +12,55 @@ from datetime import datetime
 import time
 
 streams = [
-    ('4HOPWed', 'House Of Pain'),
-    ('4ULMon', 'Unlimited'),
-    ('4ULTue', 'Unlimited'),
-    ('4ULWed', 'Unlimited'),
-    ('4ULThu', 'Unlimited'),
-    ('4ULFri', 'Unlimited'),
+    ('4CH', 'Charts'),
+    ('4CZ', 'Chez Hermez'),
+    ('4DD', 'Davi Decks'),
+    ('4DKM', 'Digital Konfusion'),
+    ('4DLL', 'Dalia\'s Late Night Lemonade'),
+    ('4FP', 'Film Podcast'),
+    ('4GL', 'Graue Lagune'),
+    ('4GP', 'Worldwide Show'),
+    ('4GPC', 'Game Podcast'),
+    ('4HE', 'Heartbeat'),
+    ('4HF', 'Hallo FM4'),
+    ('4HH', 'Happy Hour'),
+    ('4HS', 'High Spirits'),
+    ('4HOP', 'House Of Pain'),
+    ('4IS', 'Im Sumpf'),
+    ('4LB', 'La Boum de Luxe'),
+    ('4LL', 'Lieblingslieder'),
+    ('4LR', 'Liquid Radio'),
+    ('4MGMon', 'Morgengrauen (Monday)'),
+    ('4MGTue', 'Morgengrauen (Tuesday)'),
+    ('4MGWed', 'Morgengrauen (Wednesday)'),
+    ('4MGThu', 'Morgengrauen (Thursday)'),
+    ('4MGFri', 'Morgengrauen (Friday)'),
+    ('4MOMon', 'Morning Show (Monday)'),
+    ('4MOTue', 'Morning Show (Tuesday)'),
+    ('4MOWed', 'Morning Show (Wednesday)'),
+    ('4MOThu', 'Morning Show (Thursday)'),
+    ('4MOFri', 'Morning Show (Friday)'),
+    ('4MOSat', 'Morning Show (Saturday)'),
+    ('4MOSun', 'Morning Show (Sunday)'),
+    ('4MPC', 'Musik Podcast'),
+    ('4OKMon', 'OKFM4 (Monday)'),
+    ('4OKTue', 'OKFM4 (Tuesday)'),
+    ('4OKWed', 'OKFM4 (Wednesday)'),
+    ('4OKThu', 'OKFM4 (Thursday)'),
+    ('4OKFri', 'OKFM4 (Friday)'),
+    ('4PH', 'Fivas Ponyhof'),
+    ('4PSMon', 'Passt Show (Monday)'),
+    ('4PSTue', 'Passt Show (Tuesday)'),
+    ('4PSWed', 'Passt Show (Wednesday)'),
+    ('4PSThu', 'Passt Show (Thursday)'),
+    ('4PSFri', 'Passt Show (Friday)'),
+    ('4PX', 'Project X'),
+    ('4SPSun', 'Soundpark'),
+    ('4SS', 'Swound Sound'),
     ('4SSUSun', 'Sunny Side Up'),
-    ('4CHSat', 'Charts'),
-    ('4ZSSun', 'Zimmerservice'),
-    ('4JZFri', 'Jugend-Zimmer'),
-    ('4DDSat', 'Davi Decks'),
-    ('4ISSun', 'Im Sumpf'),
-    ('4HEMon', 'Heartbeat'),
-    ('4HSTue', 'High Spirits'),
-    ('4TVThe', 'Tribe Vibes'),
-    ('4SHFri', 'Salon Helga'),
-    ('4GLSun', 'Graue Lagune'),
-    ('4PHTue', 'Fivas Ponyhof'),
-    ('4CZTue', 'Chez Hermez'),
-    ('4BTThu', 'Bonustrack'),
-    ('4PXFri', 'Project X'),
-    ('4LBFri', 'La Boum de Luxe'),
-    ('4SSSat', 'Swound Sound System'),
-    ('4LRMon', 'Liquid Radio'),
-    ('4DKMSun', 'Digital Konfusion'),
-    ('4SOPMon', 'Soundpark'),
+    ('4TV', 'Tribe Vibes'),
+    ('4UL', 'Unlimited'),
+    ('4ZS', 'Zimmerservice'),
     ]
 
 try:
@@ -77,7 +100,7 @@ def show_list():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Get fm4 stream url')
-    parser.add_argument('--stream', '-s', default='4HOPWed', help='name of stream, e.g. 4HOPWed (House Of Pain) 4ULMon (Unlimited of the last monday)')
+    parser.add_argument('--stream', '-s', default='4HOP', help='name of stream, e.g. 4HOP (House Of Pain) 4UL (Unlimited of the last Friday)')
     parser.add_argument('--list', '-l', action='store_true')
     args = parser.parse_args()
     if args.list:

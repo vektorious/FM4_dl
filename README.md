@@ -31,7 +31,7 @@ The tags can be found in ```script\fm4.py```
 For example:
 
 ```bash
-python fm4.py -s "4HOPWed"
+python fm4.py -s "4HOP"
 
 >>> ['http://loopstream01.apa.at/?channel=fm4&ua=flash&id=2018-08-29_2100_tl_54_4HOPWed1_63490.mp3', 'http://loopstream01.apa.at/?channel=fm4&ua=flash&id=2018-08-29_2200_tl_54_4HOPWed2_63492.mp3']
 

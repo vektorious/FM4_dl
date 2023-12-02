@@ -36,16 +36,9 @@ python fm4.py -s "4HOP"
 >>> ['http://loopstream01.apa.at/?channel=fm4&ua=flash&id=2018-08-29_2100_tl_54_4HOPWed1_63490.mp3', 'http://loopstream01.apa.at/?channel=fm4&ua=flash&id=2018-08-29_2200_tl_54_4HOPWed2_63492.mp3']
 
 ```
-#### Install the Dropbox Uploader (optional)
-Go FM4_dl folder and use the install.sh script to install the [Dropbox-Uploader](https://github.com/andreafabrizi/Dropbox-Uploader)
+#### Install rclone (optional)
 
-```bash
-cd - #to go back to the FM4_dl folder)
-sudo chmod +x install.
-sudo bash install.sh
-```
-
-For more information about the Dropbox-Uploader visit its [repository](https://github.com/andreafabrizi/Dropbox-Uploader).
+If you want to upload your files to a cloud service, use rclone. It supports Dropbox, Google Drive, Hetzner Storage Box, SFTP, SMB / CIFS or the local filesystem (and much many more, see https://rclone.org/) 
 
 #### Automatically download MP3s
 

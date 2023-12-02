@@ -14,6 +14,7 @@ for SHOW_TAG in "${SHOW_TAGS[@]}"; do
   then
     logger "downloading ${FILENAME}"
     wget -O ${FILENAME} ${URL} #download show
+    #upload to cloud? use rclone!
   else
     logger "skipping file ${FILENAME}, it does already exist"
   fi

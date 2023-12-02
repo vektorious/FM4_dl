@@ -12,8 +12,9 @@ for SHOW_TAG in "${SHOW_TAGS[@]}"; do
   FILENAME="${STORAGE}/${SHOW_TAG}/${DATE}_${SHOW_TAG}.mp3"
   if [ ! -f ${FILENAME} ]
   then
+    logger "downloading ${FILENAME}"
     wget -O ${FILENAME} ${URL} #download show
   else
-    echo "skipping file ${FILENAME}, it does already exist"
+    logger "skipping file ${FILENAME}, it does already exist"
   fi
 done

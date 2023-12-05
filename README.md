@@ -48,7 +48,6 @@ Make the fm4_dl.sh script executable and adjust it to your needs:
 cd scripts
 sudo nano fm4_dl.sh
 ```
-If you skipped the Dropbox-Uploader step remove/comment the respective lines in the fm4_dl.sh file.
 
 Insert your favorite show tags (variable SHOW_TAGS) and storage location (STORAGE) in the script. You can find out your shows tag by looking at the [FM4 API](http://audioapi.orf.at/fm4/json/2.0/broadcasts/) or in the list in the fm4.py file
 

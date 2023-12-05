@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")" #set wd to file location
-SHOW_TAG='4HOPWed' #insert you favourite show tag here
-SHOW_URL="$(python fm4.py -s ${SHOW_TAG}| tr -d '[],')" #call python script to get the stream URL
-
-mkdir -p ../downloads/${SHOW_TAG} #creates show directory if it doesn't exist
-
-i=1
-for URL in $SHOW_URL; do
+SHOW_TAGS=(4D1 4TV 4GP 4UL 4DKM 4DD 4LB 4SS 4DLL)  #insert you favourite show tags here
+STORAGE=/mnt/storage/Musik/FM4/downloads
+for SHOW_TAG in "${SHOW_TAGS[@]}"; do
+  URL="$(python fm4.py -s ${SHOW_TAG}| tr -d '[],')" #call python script to get the stream URL
+  mkdir -p ${STORAGE}/${SHOW_TAG} #creates show directory if it doesn't exist
   URL="${URL%\'}" #removes the starting quote
   URL="${URL#\'}" #removes the last quote
   DATE="${URL#*id=}"
-  echo $DATE
   DATE="${DATE%%_*}"
-  echo $DATE
-  wget -O ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 ${URL} #download show
-  #../Dropbox-Uploader/dropbox_uploader.sh upload ../downloads/${SHOW_TAG}/${DATE}_${SHOW_TAG}_${i}.mp3 /${SHOW_TAG}/2018-08-23_${SHOW_TAG}.mp3
-  #upload to Dropbox folder: remove the line above if you don't want to use the dropbox uploader
-  let "i=i+1"
+  FILENAME="${STORAGE}/${SHOW_TAG}/${DATE}_${SHOW_TAG}.mp3"
+  if [ ! -f ${FILENAME} ]
+  then
+    logger "downloading ${FILENAME}"
+    wget -O ${FILENAME} ${URL} #download show
+    #upload to cloud? use rclone!
+  else
+    logger "skipping file ${FILENAME}, it does already exist"
+  fi
 done
-
-#

@@ -81,7 +81,7 @@ def search_in_json(stream): # changed function to look for multiple show streams
     f.close()
     res = simplejson.loads(json_s)
     # JSON structure changed (e.g. https://audioapi.orf.at/fm4/json/2.0/playlist/4LB). The "last" broadcast 
-    # day of the show is always the current one 
+    # day of the show contains always the current stream 
     parts = res[len(res)-1]['streams'] #check num of streams in the json
     if len(parts) == 1: #regular download of single stream
         loop_stream_id = res[len(res)-1]['streams'][0]['loopStreamId']
